@@ -3,11 +3,19 @@ import sqlite3
 from telebot import types
 import time
 import os
+from dotenv import load_dotenv
 from data_bases import conn
 from Data_base import user_db
 
-token = os.environ.get("BOT_TOKEN")
-bot = telebot.TeleBot(token)
+# Загружаем переменные из .env (для локальной разработки)
+load_dotenv()
+
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+
+if not BOT_TOKEN:
+    raise ValueError("Переменная окружения BOT_TOKEN не установлена!")
+
+bot = telebot.TeleBot(BOT_TOKEN)
 
 cursor = conn.cursor()
 cursor.execute("""
