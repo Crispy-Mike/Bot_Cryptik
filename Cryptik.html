@@ -19,21 +19,19 @@
         <button onclick="sellCrypto()">💸 Продать</button>
     </div>
     <script>
-        // Инициализация Mini App
+
         const tg = window.Telegram.WebApp;
         tg.ready();
-        tg.expand(); // Раскрыть на весь экран
+        tg.expand();
         
-        // Получаем данные пользователя из Telegram
         const user = tg.initDataUnsafe?.user;
         if (user) {
             document.getElementById('user').textContent = user.first_name || 'Пользователь';
         }
 
-        // Функции для кнопок
         function buyCrypto() {
-            tg.sendData(JSON.stringify({ action: 'buy' })); // Отправляем данные в бота
-            tg.close(); // Закрыть окно после отправки
+            tg.sendData(JSON.stringify({ action: 'buy' })); 
+            tg.close();
         }
         
         function sellCrypto() {

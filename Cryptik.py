@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 from data_bases import conn
 from Data_base import user_db
 
-# Загружаем переменные из .env (для локальной разработки)
+
 load_dotenv()
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
@@ -62,7 +62,7 @@ def register_user(func):
 @register_user
 def start_bot(message):
     try:
-        with open(r"C:\Cryptik\first.jpg", "rb") as photo:
+        with open("first.jpg", "rb") as photo: 
             bot.send_photo(
                 message.chat.id,
                 photo,
@@ -144,7 +144,6 @@ def profile(message):
         cursor.execute("SELECT * FROM users")
         rows = cursor.fetchall()
         
-        # Формируем сообщение
         response = "=== ТАБЛИЦА users ===\n"
         for row in rows:
             response += str(row) + "\n"
