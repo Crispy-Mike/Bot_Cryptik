@@ -11,6 +11,9 @@ __pycache__/
 
 # База данных
 cryptik.db
+*.db
+*.db-shm
+*.db-wal
 
 # Git
 .git/
